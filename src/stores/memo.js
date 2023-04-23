@@ -45,7 +45,7 @@ export const useMemoStore = defineStore('memos', () => {
   }
 
   const updateMemo = (id, content) => {
-    if (content.value.length  === 0) {
+    if (content.value.length === 0) {
       return
     }
     const targetMemo = memos.value.find((memo) => memo.id === id)
