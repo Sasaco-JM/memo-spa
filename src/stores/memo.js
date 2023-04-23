@@ -4,7 +4,7 @@ import { useRouter } from 'vue-router'
 
 export const useMemoStore = defineStore('memos', () => {
   const router = useRouter()
-  const STORAGE_KEY = 'memo-spa-vue'
+  const STORAGE_KEY = 'vue-memo-spa'
   const editingId = ref('')
 
   const memoStorage = {
@@ -45,6 +45,9 @@ export const useMemoStore = defineStore('memos', () => {
   }
 
   const updateMemo = (id, content) => {
+    if (content.value.length  === 0) {
+      return
+    }
     const targetMemo = memos.value.find((memo) => memo.id === id)
     targetMemo.content = content
     memoStorage.save()
