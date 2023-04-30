@@ -11,7 +11,7 @@ export const useMemoStore = defineStore('memos', () => {
     fetch() {
       const memos_data = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]')
       memos_data.forEach(function (memo, index) {
-        memo.id = index
+        memo.id = index + 1
       })
       memoStorage.uid = memos_data.length + 1
       return memos_data
@@ -35,7 +35,6 @@ export const useMemoStore = defineStore('memos', () => {
   const addMemo = () => {
     const id = memoStorage.uid++
     const content = '新しいメモ'
-
     memos.value.push({ id, content })
     memoStorage.save()
     router.push({ name: 'MemoEdit', params: { id: id } })
