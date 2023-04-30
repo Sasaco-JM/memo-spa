@@ -5,10 +5,7 @@ import { useMemoStore } from '@/stores/memo.js'
 
 const route = useRoute()
 const memosStore = useMemoStore()
-memosStore.editingId =
-  route.params.id !== undefined && route.params.id !== ''
-    ? parseInt(route.params.id, 10)
-    : undefined
+memosStore.editingId = route.params.id ? parseInt(route.params.id, 10) : undefined
 const content = ref(memosStore.getMemoContent(memosStore.editingId))
 
 const updateMemo = () => {

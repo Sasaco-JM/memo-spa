@@ -13,7 +13,7 @@ export const useMemoStore = defineStore('memos', () => {
       memos_data.forEach(function (memo, index) {
         memo.id = index
       })
-      memoStorage.uid = memos_data.length
+      memoStorage.uid = memos_data.length + 1
       return memos_data
     },
     save() {
@@ -36,10 +36,7 @@ export const useMemoStore = defineStore('memos', () => {
     const id = memoStorage.uid++
     const content = '新しいメモ'
 
-    memos.value.push({
-      id: id,
-      content: content
-    })
+    memos.value.push({ id, content })
     memoStorage.save()
     router.push({ name: 'MemoEdit', params: { id: id } })
   }
